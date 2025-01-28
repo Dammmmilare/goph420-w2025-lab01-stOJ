@@ -32,3 +32,19 @@ def integrate_newton(x, f, alg):
         return simpson(x, f)
     else: 
         raise ValueError("Invalid algorithm. Must be 'midpoint', 'trapezoid', or 'simpson'.")   
+
+
+def  integrate_gauss():
+
+    '''
+    parameters:
+    ==========
+    f: function to integrate
+    lims: limits of integration
+    npts: number of points to use in the integration
+
+    returns:
+    =======
+        float: the integral of f over the interval lims
+    '''
+
