@@ -6,7 +6,8 @@ build-backend = "setuptools.build_meta"
 name = "goph420_lab02"
 version = "0.0.1"
 authors = [
-  { name = "Oyedemi Joshua", email = "joshua.oyedem@ucalgary.ca" },
+  { name = "Oyedemi Joshua", email = "joshua.oyedem@ucalgary.ca" }
+  { name = "Colin Maloney", email = "colin.maloney@ucalgary.ca" },,
 ]
 description = "Lab #2 Finite Element Method for Heat Conduction"
 readme = "README.md"
@@ -19,4 +20,6 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/karcheba1/goph420-w2025-lab02"
+"Homepage" = "https://github.com/Dammmmilare/goph420-w2025-lab01-stOJ.git"
+
+
