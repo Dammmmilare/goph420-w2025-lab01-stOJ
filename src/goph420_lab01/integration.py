@@ -19,9 +19,14 @@ def integrate_newton(x, f, alg):
     float
         The integral of the function. 
     """ 
+    def midpoint(x, f): 
+        """uses midpoint rule to integrate a function""" 
+        dx = x[1] - x[0]
+        return np.sum(f) * dx
+    
     def trapezoid(x, f): 
         """uses trapezoid rule to integrate a function""" 
-        
+
 
 
     if alg == 'midpoint': 
