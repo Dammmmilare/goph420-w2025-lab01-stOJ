@@ -24,10 +24,12 @@ def integrate_newton(x, f, alg):
         dx = x[1] - x[0]
         return np.sum(f) * dx
     
-    def trapezoid(x, f): 
+    def trapezoid(x, f, dx):  
         """uses trapezoid rule to integrate a function""" 
-
-
+        integral_trap = 0.5 * dx[0] * (f[0] + f[-1])  # First and last points 
+        integral_trap += np.sum(dx[0] * f[1:-1])  # Sum of the middle points 
+        
+        return integral_trap
 
     if alg == 'midpoint': 
         return midpoint(x, f)
