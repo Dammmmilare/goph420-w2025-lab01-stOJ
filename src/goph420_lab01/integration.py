@@ -40,9 +40,14 @@ def integrate_newton(x, f, alg="trap"):
             The function values at the points x.
         
         Returns 
-        -------
+        ------- 
         
         float 
+         
+        Raises 
+        ------ 
+        ValueError 
+            If x and f do not have the same length.
 
         Notes 
         ----- 
@@ -77,7 +82,10 @@ def integrate_newton(x, f, alg="trap"):
         Assumes constant step size in the x array.
         """ 
        
-        dx = x[1] - x[0]  # Step size
+        x = np.array(x).flatten()   
+        f = np.array(f).flatten()   
+        dx = x[1] - x[0]  # Step size 
+        
         integral_simp = dx[0] / 3 * (f[0] + f[-1])  # First and last points 
         integral_simp += np.sum(4 * dx[0] * f[1:-1:2])  # Odd points 
         integral_simp += np.sum(2 * dx[0] * f[2:-1:2]) # Even points  

@@ -15,12 +15,13 @@ def test_trapezoid():
           [x[0], x[-1]], 
           [f0[0], f0[-1]],
     ) 
+    I0_act_all = trapezoid(x, f0) 
 
-    I0_act_all = trapezoid(x, f0)
     print('testing trapezoid rule')  
     print(f'f(x) = {f0[0]} from x={x[0]} to x={x[1]}') 
     print(f'Expected: {I0_exp}') 
     print(f'Actual: {I0_act_2}') 
     print(f'Acttual all: {I0_act_all}')   
+    
 if __name__ == "__main__": 
         test_trapezoid()
