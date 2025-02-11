@@ -91,19 +91,61 @@ def integrate_newton(x, f, alg="trap"):
     elif alg.strip().lower() == "simp": 
         return simpson(x, f)
 
-def  integrate_gauss():
+def integrate_gauss(f, lims, npts):
+    """
+    This function performs numerical integration of a function using Gauss-Legendre quadrature.
 
-    '''
-    parameters:
-    ==========
-    f: function to integrate
-    lims: limits of integration
-    npts: number of points to use in the integration
+    Parameters
+    -----
+    f: callable object
+        Function to be integrated.
+    lims: object with len(2).
+        Contains the lower and upper bound of integration.
+    npts: int
+        Has possible values of 1, 2, 3, 4, 5, but a default of 3.
 
-    returns:
-    =======
-        float: the integral of f over the interval lims
-    ''' 
+    Returns
+    -----
+    float: float
+        Provides the integral estimate.
+
+    Raises
+    -----
+    TypeError
+        If f is not callable.
+    ValueError
+        If lims does not have a length of 2.
+    ValueError
+        If lims[0] or lims[1] are not float convertible.
+    ValueError
+        If npts is not one of the possible values.
+    """
+    if not callable(f):
+        raise TypeError("The function f must be callable.")
+    if not len(lims) == 2:
+        raise ValueError("The parameter 'lims' must have two elements: a and b.")
+    if lims[0] != float(lims[0]) or lims[1] != float(lims[1]):
+        raise ValueError("lims[0] and lims[1] must be float convertible. ")
+    if npts not in [1, 2, 3, 4, 5]:
+        raise ValueError("npts must be either 1, 2, 3, 4, or 5.")
+
+        # creating sample points and weights for integration over [-1, 1]
+    xi_star, ci_star = np.polynomial.legendre.leggauss(npts)
+    a, b = lims
+
+        # shifts then scales sample points from [-1, 1] to [a, b], eq (9)
+    xi = ((b + a)/2) + (((b - a)/2) * xi_star)
+
+        # only scales weights from [-1, 1] to [a, b], eq (10)
+    ci = ((b - a)/2) * ci_star
+
+        # approx integral
+    integral = 0
+    for i in range(npts):
+        integral += ci[i] * f(xi[i])
+    
+    return integral
+    
 
 
 

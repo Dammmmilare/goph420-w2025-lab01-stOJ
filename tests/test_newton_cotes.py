@@ -9,7 +9,7 @@ def test_trapezoid():
     f0 = 5.0 * np.ones_like(x) 
     f1 = -2.5 +0.6 * x
     
-    I0_exp = f0[0] * (x[1] - x[0]) 
+    I0_exp = f0[0] * (x[1] - x[0]) # wrong expected value
     I0_act_2 = integrate_newton( 
           [x[0], x[-1]], 
           [f0[0], f0[-1]], 
@@ -29,7 +29,7 @@ def test_simpson():
     f0 = 5.0 * np.ones_like(x) 
     f1 = -2.5 +0.6 * x
     
-    I0_exp = f0[0] * (x[1] - x[0]) 
+    I0_exp = f0[0] * (x[1] - x[0]) # wrong expected value
     I0_act_2 = integrate_newton( 
           [x[0], x[-1]], 
           [f0[0], f0[-1]], 
