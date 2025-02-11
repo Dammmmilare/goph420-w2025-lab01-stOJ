@@ -3,13 +3,13 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "goph420_lab02"
+name = "goph420_lab01"
 version = "0.0.1"
 authors = [
-  { name = "Oyedemi Joshua", email = "joshua.oyedem@ucalgary.ca" }
-  { name = "Colin Maloney", email = "colin.maloney@ucalgary.ca" },,
+  { name = "Oyedemi Joshua", email = "joshua.oyedem@ucalgary.ca" },
+  { name = "Colin Maloney", email = "colin.maloney@ucalgary.ca" },
 ]
-description = "Lab #2 Finite Element Method for Heat Conduction"
+description = "Lab #1 Numerical Integration"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = ["numpy", "matplotlib"]
