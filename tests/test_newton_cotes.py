@@ -1,7 +1,6 @@
 import numpy as np
 from goph420_lab01.integration import ( 
     integrate_newton, 
-    integrate_gauss,
 ) 
 
 def test_trapezoid(): 
