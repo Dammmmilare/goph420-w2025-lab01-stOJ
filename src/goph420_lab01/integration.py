@@ -1,5 +1,4 @@
-from __init__ import * 
-
+import numpy as np
 
 def integrate_newton(x, f, alg="trap"):  
     
