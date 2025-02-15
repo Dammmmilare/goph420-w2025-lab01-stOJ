@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def main(): 
     # Load the data
-    data = np.loadtxt('examples/s_wave_data.txt')
+    data = np.loadtxt('data/s_wave_data.txt')
     t_data = data[:, 0] 
     v_data = data[:, 1] 
     v2_data = v_data ** 2
@@ -24,7 +24,7 @@ def main():
     plt.ylabel("Velocity Squared [m/s^2]") 
     plt.legend() 
     
-    plt.savefig("examples/s_wave_data.png") 
+    plt.savefig("figures/s_wave_data.png") 
     plt.show() 
 
 if __name__ == "__main__": 
