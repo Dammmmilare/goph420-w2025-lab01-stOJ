@@ -16,8 +16,6 @@ class TestGaussLegendre(unittest.TestCase):
             (lambda x: np.exp(-x**2), (-1, 1), 5, 1.4936, 4),
         ]
 
-        return super().setUp()
-
     def test_gauss_legendre(self):
         """Test the Gauss-Legendre integration against known results"""
         for f, lims, npts, expected, places in self.test_cases:
@@ -25,7 +23,7 @@ class TestGaussLegendre(unittest.TestCase):
                 result = integrate_gauss(f, lims, npts)
                 self.assertAlmostEqual(result, expected, places=places)
     
-    def test_inalid__function(self):
+    def test_inalid_function(self):
         """Ensure an error is raised for invalid function"""
         with self.assertRaises(TypeError):
             integrate_gauss(5, (0, 1), 3)
@@ -37,7 +35,7 @@ class TestGaussLegendre(unittest.TestCase):
     
     def test_invalid_npts(self):
         """Ensure an error is raised for invalid npts which are out of the allowable range"""
-        for invalid_npts in [0, 6, -3, 2.5, "3"]:
+        for invalid_npts in [0, 6, -3, 2.5, "three"]:
             with self.subTest(npts=invalid_npts):
                 with self.assertRaises(ValueError):
                     integrate_gauss(lambda x: x, (0, 1), invalid_npts)
