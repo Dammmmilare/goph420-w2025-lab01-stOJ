@@ -29,3 +29,18 @@ class TestGaussLegendre(unittest.TestCase):
         """Ensure an error is raised for invalid function"""
         with self.assertRaises(TypeError):
             integrate_gauss(5, (0, 1), 3)
+    
+    def test_invalid_lims(self):
+        """Ensure an error is raised for invalid lims"""
+        with self.assertRaises(ValueError):
+            integrate_gauss(lambda x: x, (0, 1, 2), 3)
+    
+    def test_invalid_npts(self):
+        """Ensure an error is raised for invalid npts which are out of the allowable range"""
+        for invalid_npts in [0, 6, -3, 2.5, "3"]:
+            with self.subTest(npts=invalid_npts):
+                with self.assertRaises(ValueError):
+                    integrate_gauss(lambda x: x, (0, 1), invalid_npts)
+
+if __name__ == "__main__":
+    unittest.main()
