@@ -1,13 +1,31 @@
 import numpy as np
 import unittest
-from goph420_lab01.integration import ( 
-    integrate_gauss, 
-) 
+from goph420_lab01.integration import (integrate_gauss,
+                                       
+                                       ) 
 
 class TestGaussLegendre(unittest.TestCase): 
-    def test_polynomial_exact(self): 
-        """ Test the Gauss-Legendre integration of a polynomial up to order 2N - 1"""
-        f = lambda x: x**3 - x**2 + x - 1
-        result = integrate_gauss(f, -1, 1, 2)
-        expected = -4/3
-        self.assertAlmostEqual(result, expected, places=10)
+
+    def setUp(self):
+        """Set up reusable test cases here with results that are known"""
+        self.test_cases = [
+            (lambda x: 5, (2, 5), 2, 15, 5),
+            (lambda x: 2*x + 3, (0, 4), 2, 20, 5),
+            (lambda x: x**2, (-2, 2), 3, 8/3, 5),
+            (lambda x: x**3 - x**2 + x - 1, (-1, 1), 3, -4/3, 5),
+            (lambda x: np.exp(-x**2), (-1, 1), 5, 1.4936, 4),
+        ]
+
+        return super().setUp()
+
+    def test_gauss_legendre(self):
+        """Test the Gauss-Legendre integration against known results"""
+        for f, lims, npts, expected, places in self.test_cases:
+            with self.subTest(f=f, lims=lims, npts=npts):
+                result = integrate_gauss(f, lims, npts)
+                self.assertAlmostEqual(result, expected, places=places)
+    
+    def test_inalid__function(self):
+        """Ensure an error is raised for invalid function"""
+        with self.assertRaises(TypeError):
+            integrate_gauss(5, (0, 1), 3)
