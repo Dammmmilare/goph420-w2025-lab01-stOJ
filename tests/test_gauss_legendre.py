@@ -1,9 +1,12 @@
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+
 import numpy as np
 import unittest
-from goph420_lab01.integration import (integrate_gauss,
-                                       
-                                       ) 
+from goph420_lab01.integration import (integrate_gauss) 
 
+# Functions for performing integration using Gauss Legendre quadrature rules
 class TestGaussLegendre(unittest.TestCase): 
 
     def setUp(self):

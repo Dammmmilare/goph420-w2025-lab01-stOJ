@@ -1,8 +1,11 @@
-import numpy as np
-from goph420_lab01.integration import ( 
-    integrate_newton, 
-) 
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
+import numpy as np
+from goph420_lab01.integration import (integrate_newton) 
+
+# Functions for performing integration using Newton Cotes rules.
 def test_trapezoid(): 
     x = np.linspace(-2.0, 5.0) 
     f0 = 5.0 * np.ones_like(x) 
