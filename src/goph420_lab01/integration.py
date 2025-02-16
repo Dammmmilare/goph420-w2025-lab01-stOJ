@@ -1,4 +1,5 @@
-import numpy as np
+import numpy as np 
+
 
 def integrate_newton(x, f, alg="trap"):  
     
@@ -11,8 +12,8 @@ def integrate_newton(x, f, alg="trap"):
         The points at which the function is evaluated. 
     f : array_like
         The function values at the points x. 
-    alg : str, optional
-        The algorithm to use 'trap' as trapezoid and 'simp' as simpson's. 
+    alg : str
+        The algorithm to use. 
         
     Returns
     -------
@@ -20,23 +21,7 @@ def integrate_newton(x, f, alg="trap"):
         The integral of the function.  
 
     """  
-    x = np.asarray(x)
-    f = np.asarray(f)
-
-    if x.shape  != f.shape:
-        raise ValueError("x and f must have the same shape")
     
-    dx = np.diff(x)
-    if not np.allclose(dx, dx[0]):
-        raise ValueError("x must be equally spaced")
-    
-    if alg.lower().strip() == "trap":
-        return np.trapz(f, x)
-    
-    elif alg.lower().strip() == "simp":
-        if len(x) % 2 == 0:
-            raise ValueError("Simpson's rule requires an odd number of points")
-        return np.sum((f[0:-1:2] + 4*f[1::2] + f[2::2]) * (dx[0] / 3))
 
     def trapezoid(x, f,):  
         """uses trapezoid rule to integrate a function  
@@ -135,10 +120,9 @@ def integrate_gauss(f, lims, npts):
     ValueError
         If npts is not one of the possible values.
     """
-
     if not callable(f):
         raise TypeError("The function f must be callable.")
-    if not len(lims) != 2:
+    if not len(lims) == 2:
         raise ValueError("The parameter 'lims' must have two elements: a and b.")
     if lims[0] != float(lims[0]) or lims[1] != float(lims[1]):
         raise ValueError("lims[0] and lims[1] must be float convertible. ")
