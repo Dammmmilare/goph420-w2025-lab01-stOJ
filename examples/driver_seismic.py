@@ -13,7 +13,7 @@ time,velocity = data[:,0], data[:,1]
 # only using the data we need thanks to this threshold!!
 v_max = np.max(np.abs(velocity))
 threshold = 0.005 * v_max 
-index = np.where(np.abs(velocity) > threshold)[0]
+index = np.where(np.abs(velocity) > threshold)[0][-1]
 
 # make space to retain values for error caluclation later
 dt = [] 
